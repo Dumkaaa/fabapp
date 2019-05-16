@@ -248,7 +248,7 @@ if (isset($_SESSION['success_msg']) && $_SESSION['success_msg']!= ""){
 								</form>
 								</ul>
 							</li>
-							<?php if ( $sv['wait_system'] != "new") { ?>
+							<?php if ($sv['wait_system'] != "new") { ?>
 								<li>
 									<a href="/admin/now_serving.php"><i class="fas fa-list-ol"></i> Now Serving</a>
 								</li>
@@ -271,7 +271,7 @@ if (isset($_SESSION['success_msg']) && $_SESSION['success_msg']!= ""){
 								</ul>
 							</li>
 						<?php }
-						if (isset($staff) && ($staff->getRoleID() >=  $sv['LvlOfStaff'] || $staff->getRoleID() ==  $sv['serviceTechnican'])) { ?>
+						if(isset($staff) && ($staff->getRoleID() >=  $sv['LvlOfStaff'] || $staff->getRoleID() ==  $sv['serviceTechnican'])) { ?>
 							<li>
 								<a href="#"><i class="fa fa-wrench fa-fw"></i> Service<span class="fa arrow"></span></a>
 								<ul class="nav nav-second-level">
@@ -307,49 +307,50 @@ if (isset($_SESSION['success_msg']) && $_SESSION['success_msg']!= ""){
 									</li>
 								</ul>
 							</li>
-							<?php
-							if( $sv['wait_system'] == "new"){ ?>
-								<li>
-									<a href="/pages/wait_ticket.php"><i class="fas fa-list-ol"></i> Wait Queue Ticket</a>
-								</li>
-							<?php } 
-							if(isset($staff) && $staff->getRoleID() >= $sv['minRoleTrainer']) {
-							?>
-								<li>
-									<a href="#"><i class="fas fa-sitemap"></i> Admin<span class="fas fa-angle-left"></span></a>
-									<ul class="nav nav-second-level">
-										<li>
-											<a href="/admin/stats.php"><i class="fas fa-chart-line"></i> Data Reports</a>
-										</li>
-										<li>
-											<a href="/admin/manage_device.php"><i class="fas fa-edit"></i> Manage Devices</a>
-										</li>
-										<li>
-											<a href="/admin/objbox.php"><i class="fas fa-gift"></i> Objects in Storage</a>
-										</li>
-										<li>
-											<a href="/admin/onboarding.php"><i class="fas fa-clipboard"></i> OnBoarding</a>
-										</li>
-										<li>
-											<a herf="#"><i class="fas fa-users"></i> Users<span class="fas fa-angle-left"></span></a>
-											<ul class="nav nav-third-level">
-												<li>
-													<a href="/admin/addrfid.php"><i class="fas fa-wifi"></i> Add RFID</a>
-												</li>
-											</ul>
-										</li>
-									</ul>
-									<!-- /.nav-second-level -->
-								</li>
+						<?php }
+						if(isset($staff) && $staff->getRoleID() >=  $sv['LvlOfStaff'] && $sv['wait_system'] == "new"){ ?>
+							<li>
+								<a href="/pages/wait_ticket.php"><i class="fas fa-list-ol"></i> Wait Queue Ticket</a>
+							</li>
+						<?php } 
+						if(isset($staff) && $staff->getRoleID() >= $sv['minRoleTrainer']) { ?>
+							<li>
+								<a href="#"><i class="fas fa-sitemap"></i> Admin<span class="fas fa-angle-left"></span></a>
+								<ul class="nav nav-second-level">
+									<li>
+										<a href="/admin/stats.php"><i class="fas fa-chart-line"></i> Data Reports</a>
+									</li>
+									<li>
+										<a href="/admin/manage_device.php"><i class="fas fa-edit"></i> Manage Devices</a>
+									</li>
+									<li>
+										<a href="/admin/objbox.php"><i class="fas fa-gift"></i> Objects in Storage</a>
+									</li>
+									<li>
+										<a href="/admin/onboarding.php"><i class="fas fa-clipboard"></i> OnBoarding</a>
+									</li>
+									<li>
+										<a herf="#"><i class="fas fa-users"></i> Users<span class="fas fa-angle-left"></span></a>
+										<ul class="nav nav-third-level">
+											<li>
+												<a href="/admin/addrfid.php"><i class="fas fa-wifi"></i> Add RFID</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+								<!-- /.nav-second-level -->
+							</li>
 							<li>
 								<a href="#"><i class="fas fa-user-cog"></i> Site Tools<span class="fas fa-angle-left"></span></a>
 								<ul class="nav nav-second-level">
 									<li>
 										<a href="/admin/sv.php"><i class="fas fa-sliders-h"></i> Site Variables</a>
 									</li>
+									<li>
+										<a href="/admin/storage_unit_creator.php"><i class="fas fa-inbox"></i> Storage Drawer Creator</a>
+									</li>
 								</ul>
 							</li>
-							<?php } ?>
 						<?php } ?>
 					</ul>
 				</div>
